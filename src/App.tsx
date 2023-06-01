@@ -3,14 +3,16 @@ import {DefaultTheme, ThemeProvider} from "styled-components";
 import {ContainerStyled} from "./components/styles/Container.styled";
 import GlobalStyles from "./components/styles/Global";
 import Header from "./components/Header";
-
+import content from "./content";
+import Card from "./components/Card";
 
 export const theme: DefaultTheme = {
     colors: {
         header: '#ebfbff',
         body: '#fff',
         footer: '#003333',
-    }
+    },
+    mobile: '768px',
 }
 
 const App: React.FC = () => {
@@ -20,7 +22,9 @@ const App: React.FC = () => {
                 <GlobalStyles/>
                 <Header/>
                 <ContainerStyled>
-                    <h1>Hello</h1>
+                    {content.map((item, index) => (
+                        <Card key={index} item={item}/>
+                    ))}
                 </ContainerStyled>
             </>
         </ThemeProvider>
